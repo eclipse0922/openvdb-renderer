@@ -26,8 +26,6 @@ cd build
 cmake ..
 ```
 
-https://academysoftwarefoundation.github.io/openvdb/build.html#buildUsingOpenVDB
-
 ### Executing the program
 
 From the build folder, you can launch the program : 
