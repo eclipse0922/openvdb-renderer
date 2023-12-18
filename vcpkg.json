@@ -1,0 +1,24 @@
+{
+  "name": "openvdb-renderer",
+  "dependencies": [
+    {
+      "name": "openvdb",
+      "features": [
+        "nanovdb",
+        "tools"
+      ]
+    },
+    "rply",
+    "glew",
+    "glfw3",
+    "glm",
+    "opengl",
+    {
+      "name": "imgui",
+      "features": [
+        "glfw-binding",
+        "opengl3-binding"
+      ]
+    }
+  ]
+}

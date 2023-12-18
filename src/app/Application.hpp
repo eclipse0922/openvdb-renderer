@@ -4,7 +4,8 @@
 #include <string>
 
 #include <GL/glew.h>
-#include <imgui/imfilebrowser.h>
+#include <imgui.h>
+#include "imfilebrowser.h"
 #include <openvdb/openvdb.h>
 
 #include "vdb/VDBFile.hpp"

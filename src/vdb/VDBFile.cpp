@@ -2,7 +2,7 @@
 #include <vector>
 
 #include "GL/glew.h"
-#include <imgui/imgui.h>
+#include <imgui.h>
 #include <openvdb/math/Coord.h>
 #include <openvdb/openvdb.h>
 
@@ -28,8 +28,6 @@ std::string getGridType(openvdb::GridBase::Ptr grid)
     return "Vec3SGrid";
   else if (grid->isType<openvdb::Vec3DGrid>())
     return "Vec3DGrid";
-  else if (grid->isType<openvdb::StringGrid>())
-    return "StringGrid";
 
   return "Type not found";
 }

@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.12)
 
+set(CMAKE_TOOLCHAIN_FILE
+    "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    CACHE STRING "Vcpkg toolchain file")
+
 # set the project name
 project(openvdb-renderer VERSION 1.0)
 
@@ -15,8 +19,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # PACKAGES
 ###############################################################
 
-# Imgui
-add_subdirectory(imgui)
 
 # glfw
 find_package(glfw3 REQUIRED)
@@ -36,8 +38,11 @@ find_package(glm REQUIRED)
 include_directories(${GLM_INCLUDE_DIRS})
 
 # OpenVDB
-list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/src/ext/openvdb/cmake")
 find_package(OpenVDB REQUIRED)
+
+# imgui
+find_package(imgui CONFIG REQUIRED)
+
 
 ###############################################################
 # SOURCES
@@ -78,13 +83,16 @@ include_directories(${PROJECT_SOURCE_DIR} src)
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
 
 # Warning level
-target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic)# -Werror)
-
+if(MSVC)
+    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE /bigobj /W4 /permissive-)
+else()
+    target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic)
+endif()
 target_link_libraries(
   ${CMAKE_PROJECT_NAME}
   ${OPENGL_LIBRARIES}
   ${GLEW_LIBRARIES}
   glfw
-  imgui
+  imgui::imgui
   OpenVDB::openvdb
 )
