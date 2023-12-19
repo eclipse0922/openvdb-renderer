@@ -28,6 +28,7 @@
 #include "shader/VertexShader.hpp"
 
 #include "geometry/FullScreenVAO.hpp"
+#include "geometry/MeshUtil.hpp"
 
 #include "Application.hpp"
 #include <vector>

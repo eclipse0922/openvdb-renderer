@@ -61,6 +61,7 @@ set(SOURCES
   src/geometry/VAO.cpp
   src/geometry/IGeometry.cpp
   src/geometry/CubeGeometry.cpp
+  src/geometry/MeshUtil.hpp
 
   src/log/Log.cpp
 
